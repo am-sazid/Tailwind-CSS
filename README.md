@@ -1,2 +1,18 @@
-# Tailwind-CSS
-This repository contains my learning resources, mini projects, and experiments using Tailwind CSS — a utility-first CSS framework for rapidly building modern, responsive user interfaces. Here, I explore custom components, responsive layouts, and creative UI designs using Tailwind's powerful utility classes.
+# 🌈 Tailwind CSS Practice Repository
+
+Welcome to my Tailwind CSS practice repository!  
+Here I explore, learn, and build responsive UI components and layouts using [Tailwind CSS](https://tailwindcss.com/) — a utility-first CSS framework packed with classes that help you build modern designs quickly.
+
+---
+
+## 📌 What's Included
+
+- ✅ Tailwind CSS setup (CDN & CLI methods)
+- ✅ Responsive components (navbar, cards, buttons, etc.)
+- ✅ Custom layouts and creative UI sections
+- ✅ Practice experiments and mini projects
+
+---
+
+## 📁 Project Structure
+
