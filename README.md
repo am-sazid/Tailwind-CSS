@@ -7,7 +7,7 @@ Here I explore, learn, and build responsive UI components and layouts using [Tai
 
 ## 📌 What's Included
 
-- ✅ Tailwind CSS setup (CDN & CLI methods)
+- ✅ Tailwind CSS setup (CDN,CLI & vite methods)
 - ✅ Responsive components (navbar, cards, buttons, etc.)
 - ✅ Custom layouts and creative UI sections
 - ✅ Practice experiments and mini projects
