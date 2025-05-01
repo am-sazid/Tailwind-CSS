@@ -1,0 +1,78 @@
+
+/* Support Section Style */
+.support-img{
+    width: 100px;
+}
+.support-h1{
+    color: #363958;
+    font-family: Roboto;
+    font-size: 20px;
+    font-weight: 700;;
+}
+
+.support-p{
+    color: #3E3E3E;
+    text-align: left;
+    font-family: Roboto;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+
+.footer{
+    background-color: rgb(10,8,38);
+    text-align: center;
+    padding: 10px 500px;
+    margin-top: 100px;
+}
+.social{
+    display: flex;
+    gap: 10px;
+    margin-left: 35%;
+}
+.social img{
+    width: 30px;
+    height: 30px;
+}
+.gg{
+    color: #ffff;
+    font-size: 40px;
+    margin-bottom: 5px;
+}
+.copy{
+    color: #ffff;
+    margin-top: 0px;
+    margin-bottom: 5px;
+}
+.copy2{
+    color: #ffff;
+    margin-top: 5px;
+}
+
+@media screen and (max-width: 768px) {
+    .support-p{
+        text-align: center;
+        font-size: 14px;
+    }
+    .footer{
+        padding: 10px 20px;
+        margin-top: 50px;
+    }
+    .social{
+        margin-left: 0;
+        justify-content: center;
+    }
+    .social img{
+        width: 25px;
+        height: 25px;
+    }
+    .gg{
+        font-size: 30px;
+    }
+    .copy{
+        font-size: 14px;
+    }
+    .copy2{
+        font-size: 14px;
+    }
+}
