@@ -3,28 +3,32 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Accept Me 💖</title>
+    <title>Will You Be Mine Forever? 💖</title>
     <link
       href="https://cdn.jsdelivr.net/npm/daisyui@5/dist/full.css"
       rel="stylesheet"
       type="text/css"
     />
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+      /* No Button Styles - Fixed Position */
       #noBtn {
-        position: absolute;
-        transition: all 0.25s ease;
-        touch-action: none;
+        position: fixed;
+        transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
         cursor: pointer;
+        z-index: 40;
+        pointer-events: auto;
       }
 
       /* Floating hearts */
       .heart {
-        position: absolute;
+        position: fixed;
         font-size: 24px;
         animation: float 3s linear infinite;
         opacity: 0.8;
         pointer-events: none;
+        z-index: 30;
       }
 
       @keyframes float {
@@ -36,138 +40,850 @@
           opacity: 1;
         }
         100% {
-          transform: translateY(-300px) scale(1.3);
+          transform: translateY(-100vh) scale(1.3);
           opacity: 0;
         }
       }
+
+      /* Professional Modal Styling - Perfectly Centered */
+      .modal-box {
+        position: fixed !important;
+        top: 50% !important;
+        left: 50% !important;
+        transform: translate(-50%, -50%) !important;
+        margin: 0 !important;
+        max-height: 85vh !important;
+        overflow-y: auto !important;
+        max-width: 95vw !important;
+        width: auto !important;
+      }
+
+      /* Sparkle effect */
+      .sparkle {
+        position: fixed;
+        width: 6px;
+        height: 6px;
+        background-color: rgba(255, 255, 255, 0.8);
+        border-radius: 50%;
+        animation: sparkle 1.5s infinite;
+        pointer-events: none;
+        z-index: 10;
+      }
+
+      @keyframes sparkle {
+        0%, 100% { opacity: 0; transform: scale(0); }
+        50% { opacity: 1; transform: scale(1); }
+      }
+
+      /* Pulse animation for images */
+      @keyframes pulse-love {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.05); }
+        100% { transform: scale(1); }
+      }
+
+      .pulse-love {
+        animation: pulse-love 2s infinite;
+      }
+
+      /* Romantic message animation */
+      .gradient-text {
+        background: linear-gradient(45deg, #ff6b9d, #c779d0, #4bc0c8);
+        background-size: 200% 200%;
+        animation: gradientBG 3s ease infinite;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      @keyframes gradientBG {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+      }
+
+      /* Glow effect for container */
+      .glow-container {
+        box-shadow: 0 0 40px rgba(255, 105, 180, 0.3);
+      }
+
+      /* Floating text animation */
+      .floating {
+        animation: floating 3s ease-in-out infinite;
+      }
+
+      @keyframes floating {
+        0% { transform: translateY(0px); }
+        50% { transform: translateY(-10px); }
+        100% { transform: translateY(0px); }
+      }
+
+      /* Button hover effects */
+      .btn-hover-effect {
+        transition: all 0.3s ease;
+      }
+      
+      .btn-hover-effect:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+      }
+
+      /* Celebration animation */
+      @keyframes celebrate {
+        0% { transform: scale(1) rotate(0deg); }
+        25% { transform: scale(1.1) rotate(5deg); }
+        50% { transform: scale(1.05) rotate(-5deg); }
+        75% { transform: scale(1.1) rotate(5deg); }
+        100% { transform: scale(1) rotate(0deg); }
+      }
+
+      .celebrate {
+        animation: celebrate 0.5s ease-in-out 3;
+      }
+
+      /* Responsive adjustments */
+      @media (max-width: 640px) {
+        .mobile-stack {
+          flex-direction: column;
+        }
+        
+        .mobile-text {
+          font-size: 1.5rem !important;
+        }
+        
+        .mobile-padding {
+          padding: 1rem !important;
+        }
+        
+        #noBtn {
+          font-size: 0.9rem;
+          padding: 0.5rem 1rem;
+        }
+        
+        .footer-text {
+          font-size: 0.9rem !important;
+        }
+        
+        .modal-box {
+          width: 90% !important;
+          padding: 1.5rem !important;
+        }
+      }
+
+      /* Music note animation */
+      .music-note {
+        position: absolute;
+        font-size: 20px;
+        opacity: 0;
+        animation: musicFloat 2s linear infinite;
+      }
+
+      @keyframes musicFloat {
+        0% {
+          transform: translateY(0) rotate(0deg);
+          opacity: 0;
+        }
+        10% {
+          opacity: 1;
+        }
+        90% {
+          opacity: 1;
+        }
+        100% {
+          transform: translateY(-100px) rotate(360deg);
+          opacity: 0;
+        }
+      }
+
+      /* Smooth scrollbar for modal */
+      .modal-box::-webkit-scrollbar {
+        width: 6px;
+      }
+      
+      .modal-box::-webkit-scrollbar-track {
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 10px;
+      }
+      
+      .modal-box::-webkit-scrollbar-thumb {
+        background: rgba(255, 105, 180, 0.5);
+        border-radius: 10px;
+      }
     </style>
   </head>
-  <body
-    class="bg-gradient-to-b from-[#04133a] to-[#0b225d] min-h-screen flex flex-col items-center justify-center text-white font-sans relative overflow-hidden"
-  >
-    <!-- Your Image -->
-    <div class="mb-6 flex justify-center relative">
-      <!-- Blur background -->
-      <div
-        class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-36 bg-pink-300 rounded-3xl filter blur-3xl opacity-50 z-0"
-      ></div>
+  <body class="bg-gradient-to-b from-[#04133a] to-[#0b225d] min-h-screen text-white font-sans overflow-x-hidden">
+    
+    <!-- Background Effects -->
+    <div id="sparkles"></div>
+    <div id="hearts-container"></div>
+    <div id="music-notes"></div>
 
-      <!-- তোমার ছবি -->
-      <img
-        src="image/WhatsApp Image 2025-11-15 at 2.47.55 PM.jpeg"
-        alt="My Photo"
-        class="w-36 h-36 rounded-full border-4 border-pink-400 shadow-lg z-20"
-      />
+    <!-- Main Container -->
+    <div class="min-h-screen flex flex-col">
+      
+      <!-- Main Content -->
+      <div class="flex-1 flex flex-col items-center justify-center px-4 py-8">
+        
+        <!-- Images with Heart -->
+        <div class="flex items-center justify-center mb-8 mobile-stack">
+          <!-- Your Image -->
+          <div class="relative z-20">
+            <div class="absolute -inset-4 bg-pink-500/20 rounded-full blur-xl"></div>
+            <img
+              src="public/7d6ee6c7-02e7-4dde-a05c-09a2d4943d49.jpeg"
+              alt="My Photo"
+              class="relative w-32 h-32 md:w-40 md:h-40 rounded-full border-4 border-pink-400 shadow-2xl pulse-love"
+            />
+          </div>
 
-      <!-- তোমার GF-এর ছবি -->
-      <img
-        src="image/istockphoto-1132152826-612x612.jpg"
-        alt="My Love"
-        class="w-36 h-36 rounded-full border-4 border-pink-400 shadow-lg -ml-12 z-10"
-      />
-    </div>
+          <!-- Heart between images -->
+          <div class="mx-4 md:mx-8 z-30">
+            <div class="text-5xl md:text-6xl text-pink-500 animate-pulse">
+              <i class="fas fa-heart"></i>
+            </div>
+          </div>
 
-    <header class="text-center mb-6 px-3">
-      <h1
-        class="text-3xl md:text-4xl font-extrabold text-pink-400 drop-shadow-lg"
-      >
-        💖 Hey My Love 💖
-      </h1>
-      <p class="text-base md:text-lg mt-2 text-gray-200 italic">
-        I have something special to say...
-      </p>
-    </header>
+          <!-- GF's Image -->
+          <div class="relative z-20">
+            <div class="absolute -inset-4 bg-pink-500/20 rounded-full blur-xl"></div>
+            <img
+              src="public/613923733_1434488431538525_6918183695644947555_n.jpg"
+              alt="My Love"
+              class="relative w-32 h-32 md:w-40 md:h-40 rounded-full border-4 border-pink-400 shadow-2xl pulse-love"
+              style="animation-delay: 1s;"
+            />
+          </div>
+        </div>
 
-    <main
-      class="bg-white/10 backdrop-blur-md border border-white/20 rounded-3xl shadow-2xl p-6 md:p-8 w-[90%] max-w-lg text-center relative overflow-hidden"
-    >
-      <h2 class="text-2xl md:text-3xl font-bold text-pink-300 mb-6">
-        Will You Be Mine Forever? 💍
-      </h2>
+        <!-- Header -->
+        <header class="text-center mb-8 max-w-2xl px-4">
+          <h1 class="text-3xl md:text-5xl font-bold mb-4 gradient-text mobile-text">
+            My Dearest Love 💖
+          </h1>
+          <p class="text-lg md:text-xl text-gray-300 italic">
+            Every moment with you feels like a beautiful dream...
+          </p>
+        </header>
 
-      <div class="flex gap-6 mt-8 relative">
+        <!-- Main Card -->
+        <main class="bg-white/10 backdrop-blur-lg border border-white/20 rounded-3xl shadow-2xl w-full max-w-lg p-6 md:p-8 glow-container smooth-transition mb-8">
+          
+          <!-- Romantic Quote -->
+          <div class="bg-gradient-to-r from-pink-900/30 to-purple-900/30 rounded-2xl border border-pink-500/30 p-4 mb-6">
+            <p class="text-center italic text-pink-200">
+              <i class="fas fa-quote-left text-pink-300 mr-2"></i>
+              In your eyes, I found my home. In your heart, I found my love.
+              <i class="fas fa-quote-right text-pink-300 ml-2"></i>
+            </p>
+          </div>
+
+          <!-- Main Question -->
+          <h2 class="text-2xl md:text-3xl font-bold text-center text-pink-300 mb-6 floating">
+            Will You Be Mine Forever? 💍
+          </h2>
+
+          <!-- Countdown -->
+          <div class="bg-white/5 rounded-xl p-4 mb-8">
+            <p class="text-gray-300 text-center mb-2">Our love story begins in...</p>
+            <div id="loveTimer" class="text-2xl md:text-3xl font-bold text-center text-pink-400">
+              3... 2... 1...
+            </div>
+          </div>
+
+          <!-- Action Buttons -->
+          <div class="flex flex-col sm:flex-row gap-4 justify-center items-stretch sm:items-center">
+            <button
+              id="yesBtn"
+              onclick="acceptProposal()"
+              class="btn-hover-effect bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white font-semibold text-lg px-8 py-3 rounded-full shadow-lg flex-1 sm:flex-none flex items-center justify-center gap-2"
+            >
+              <i class="fas fa-heart"></i>
+              <span>Yes, Forever! 💕</span>
+            </button>
+          </div>
+        </main>
+        
+        <!-- No Button - Separate from main card -->
         <button
-          class="btn btn-success text-lg px-6 py-2 rounded-full shadow-md transition hover:scale-110"
-          onclick="my_modal_1.showModal()"
+          id="noBtn"
+          class="bg-gradient-to-r from-red-500 to-pink-600 text-white font-semibold text-lg px-8 py-3 rounded-full shadow-lg flex items-center justify-center gap-2 mt-4"
+          style="position: fixed; top: 70%; left: 50%; transform: translateX(-50%);"
         >
-          Yes 💕
+          <i class="fas fa-sad-tear"></i>
+          <span>No 😢</span>
         </button>
       </div>
-    </main>
 
-    <button
-      id="noBtn"
-      class="btn btn-error text-lg px-6 py-2 rounded-full shadow-md transition"
-    >
-      No 😢
-    </button>
+      <!-- Footer -->
+      <footer class="mt-auto w-full bg-gradient-to-r from-pink-900/20 to-purple-900/20 border-t border-white/10 py-6">
+        <div class="max-w-4xl mx-auto px-4">
+          <div class="flex flex-col md:flex-row justify-between items-center">
+            <div class="mb-4 md:mb-0 text-center md:text-left">
+              <h3 class="text-xl font-bold text-pink-300 mb-2">Made With <i class="fas fa-heart text-red-400"></i> For You</h3>
+              <p class="text-gray-300 footer-text">This moment will forever be in my heart</p>
+            </div>
+            
+            <!-- Romantic timeline -->
+            <div class="text-center">
+              <div class="flex space-x-6 mb-3">
+                <div class="text-center">
+                  <div class="w-3 h-3 bg-pink-500 rounded-full mx-auto mb-1"></div>
+                  <p class="text-xs text-gray-300">First Meet</p>
+                </div>
+                <div class="text-center">
+                  <div class="w-3 h-3 bg-pink-500 rounded-full mx-auto mb-1"></div>
+                  <p class="text-xs text-gray-300">First Date</p>
+                </div>
+                <div class="text-center">
+                  <div class="w-3 h-3 bg-pink-500 rounded-full mx-auto mb-1"></div>
+                  <p class="text-xs text-gray-300">First Kiss</p>
+                </div>
+                <div class="text-center">
+                  <div class="w-4 h-4 bg-pink-500 rounded-full mx-auto mb-1 animate-pulse"></div>
+                  <p class="text-xs font-bold text-pink-300">Today 💍</p>
+                </div>
+                <div class="text-center">
+                  <div class="w-3 h-3 bg-pink-500 rounded-full mx-auto mb-1"></div>
+                  <p class="text-xs text-gray-300">Forever</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Special message -->
+          <div class="mt-4 text-center">
+            <p class="text-pink-200 italic text-sm">
+              "True love stories never have endings. This is just our beautiful beginning."
+            </p>
+          </div>
+        </div>
+      </footer>
 
-    <dialog id="my_modal_1" class="modal">
-      <div
-        class="modal-box bg-gradient-to-br from-pink-300 via-pink-200 to-pink-400 text-gray-900 w-[28rem] max-w-full p-8 text-center rounded-3xl shadow-2xl transform transition-transform duration-500 scale-95 hover:scale-100"
-      >
-        <h3 class="font-extrabold text-4xl mb-5 animate-pulse text-pink-700">
-          Awww 😍
-        </h3>
-        <p class="text-xl mb-6">
-          You just made my world brighter than ever! 🌸<br />
-          <span class="font-semibold text-pink-800"
-            >I love you endlessly ❤️</span
-          >
+      <!-- Name at very bottom -->
+      <div class="bg-gradient-to-r from-pink-900/30 to-purple-900/30 py-3 text-center border-t border-white/10">
+        <p class="text-gray-300">
+          <span class="text-pink-300 text-xs font-semibold">Crafted with love by</span>
+          <a href="https://www.facebook.com/amsazid1"><span class="text-white text-xs font-bold ml-2">A M Sazid <i class="fa-brands fa-facebook"></i></span></a>
         </p>
-        <div class="modal-action justify-center">
-          <form method="dialog">
-            <button
-              class="btn bg-pink-600 text-white hover:bg-pink-700 hover:scale-105 transform transition-all duration-300 shadow-xl text-lg px-6 py-3"
-            >
-              Close
+      </div>
+    </div>
+
+    <!-- Success Modal - Improved & Professional -->
+    <dialog id="successModal" class="modal backdrop:bg-black/70">
+      <div class="modal-box bg-gradient-to-br from-pink-300 via-pink-200 to-pink-400 text-gray-900 p-0 rounded-3xl shadow-2xl border-4 border-white/30 overflow-hidden max-w-md w-full mx-4">
+        <!-- Modal Content -->
+        <div class="p-6 md:p-8 text-center">
+          
+          <!-- Close Button (Top Right) -->
+          <form method="dialog" class="absolute right-4 top-4 z-10">
+            <button class="btn btn-sm btn-circle btn-ghost text-gray-700 hover:text-gray-900 hover:bg-white/50">
+              ✕
             </button>
           </form>
+          
+          <!-- Celebration Icon -->
+          <div class="text-6xl mb-4 animate-bounce">
+            💖
+          </div>
+          
+          <!-- Title -->
+          <h3 class="font-bold text-3xl mb-4 text-pink-700">
+            You Made My Day! 😍
+          </h3>
+          
+          <!-- Animated Heart Line -->
+          <div class="flex justify-center mb-6">
+            <div class="flex space-x-2">
+              <span class="text-2xl animate-pulse">❤️</span>
+              <span class="text-2xl animate-pulse" style="animation-delay: 0.2s">💖</span>
+              <span class="text-2xl animate-pulse" style="animation-delay: 0.4s">💕</span>
+              <span class="text-2xl animate-pulse" style="animation-delay: 0.6s">💗</span>
+              <span class="text-2xl animate-pulse" style="animation-delay: 0.8s">💓</span>
+            </div>
+          </div>
+          
+          <!-- Message -->
+          <div class="space-y-4 mb-6">
+            <p class="text-xl text-pink-800 font-medium">
+              My heart is overflowing with joy! 🌸
+            </p>
+            <div class="bg-white/40 p-4 rounded-2xl border border-white/50">
+              <p class="text-lg italic text-pink-900 font-semibold">
+                "You just made me the happiest person in the world! ❤️"
+              </p>
+            </div>
+            <p class="text-gray-800">
+              From this moment on, my world revolves around you. I promise to cherish every second with you, to support your dreams, and to love you more with each passing day.
+            </p>
+          </div>
+          
+          <!-- Date Selection -->
+          <div class="mb-6">
+            <p class="text-pink-800 font-semibold mb-3 text-lg">
+              Let's celebrate our new beginning! 🎉
+            </p>
+            <div class="grid grid-cols-1 gap-3">
+              <button onclick="selectDate('This weekend')" class="btn bg-pink-600 border-none text-white hover:bg-pink-700 w-full py-3 text-base">
+                <i class="fas fa-calendar-week mr-2"></i>
+                This Weekend
+              </button>
+              <button onclick="selectDate('Next week')" class="btn bg-pink-600 border-none text-white hover:bg-pink-700 w-full py-3 text-base">
+                <i class="fas fa-calendar-alt mr-2"></i>
+                Next Week
+              </button>
+              <button onclick="selectDate('As soon as possible')" class="btn bg-pink-600 border-none text-white hover:bg-pink-700 w-full py-3 text-base">
+                <i class="fas fa-bolt mr-2"></i>
+                ASAP! (I can't wait!)
+              </button>
+            </div>
+          </div>
+          
+          <!-- Romantic Promise -->
+          <div class="bg-gradient-to-r from-white/30 to-transparent p-4 rounded-2xl mb-6 border-l-4 border-pink-500">
+            <p class="text-pink-900 font-medium italic">
+              "I will treasure you, honor you, and stand by you through all of life's adventures."
+            </p>
+          </div>
+          
+          <!-- Action Button -->
+          <div class="modal-action justify-center">
+            <form method="dialog">
+              <button class="btn bg-gradient-to-r from-pink-600 to-pink-700 border-none text-white hover:from-pink-700 hover:to-pink-800 px-8 py-3 text-lg font-semibold shadow-lg">
+                <i class="fas fa-glass-cheers mr-2"></i>
+                Close & Start Our Journey! 🥂
+              </button>
+            </form>
+          </div>
         </div>
       </div>
+      
+      <!-- Modal Backdrop Click to Close -->
+      <form method="dialog" class="modal-backdrop">
+        <button>close</button>
+      </form>
     </dialog>
 
+    <!-- Confetti Container -->
+    <div id="confetti-container"></div>
+
+    <!-- Audio Element for Background Music -->
+    <audio id="backgroundMusic" loop>
+      <!-- Fallback audio source - in real use, add your romantic music URL -->
+      <source src="public/Heer Ranjha Status Heer Ranjha WhatsApp Status  Rito Riba  New Love Status  RK Creation2.1.mp3" type="audio/mpeg">
+      Your browser does not support the audio element.
+    </audio>
+
     <script>
-      const noBtn = document.getElementById("noBtn");
-      const body = document.body;
+      // DOM Elements
+      const noBtn = document.getElementById('noBtn');
+      const yesBtn = document.getElementById('yesBtn');
+      const loveTimer = document.getElementById('loveTimer');
+      const successModal = document.getElementById('successModal');
+      const sparklesContainer = document.getElementById('sparkles');
+      const heartsContainer = document.getElementById('hearts-container');
+      const musicNotesContainer = document.getElementById('music-notes');
+      const confettiContainer = document.getElementById('confetti-container');
+      const backgroundMusic = document.getElementById('backgroundMusic');
+      
+      // State Variables
+      let noBtnClickCount = 0;
+      let isMoving = false;
+      let isMusicPlaying = false;
+      let countdownCompleted = false;
+      
+      // No Button Messages Sequence
+      const noButtonMessages = [
+        { text: "No 😢", icon: "fa-sad-tear" },
+        { text: "Click Yes instead!", icon: "fa-hand-point-right" },
+        { text: "Try the Yes button! 💕", icon: "fa-heart" },
+        { text: "Yes is better! 😊", icon: "fa-smile-wink" },
+        { text: "Please click Yes! 🥺", icon: "fa-praying-hands" },
+        { text: "Okay, I'll click Yes! 💖", icon: "fa-heart" }
+      ];
 
-      // Initial position
-      noBtn.style.top = "74%";
-      noBtn.style.left = "54%";
-
-      function moveNoBtn() {
-        const bodyRect = body.getBoundingClientRect();
-        const btnRect = noBtn.getBoundingClientRect();
-
-        // Keep button fully inside viewport
-        const maxX = bodyRect.width - btnRect.width - 10;
-        const maxY = bodyRect.height - btnRect.height - 10;
-
-        const x = Math.random() * maxX;
-        const y = Math.random() * maxY;
-
-        noBtn.style.left = `${x}px`;
-        noBtn.style.top = `${y}px`;
+      // Initialize Page
+      function init() {
+        // Start countdown
+        startCountdown();
+        
+        // Create initial effects
+        createSparkles(15);
+        createHearts(10);
+        
+        // Set up intervals
+        setInterval(() => createSparkles(3), 4000);
+        setInterval(() => createHearts(2), 1500);
+        
+        // Set initial No button position
+        positionNoButton();
+        
+        // Setup event listeners
+        setupEventListeners();
+        
+        // Add CSS for animations
+        addCustomCSS();
       }
 
-      // Desktop hover
-      noBtn.addEventListener("mouseenter", moveNoBtn);
-      // Mobile tap
-      noBtn.addEventListener("click", moveNoBtn);
+      // Setup Event Listeners
+      function setupEventListeners() {
+        // No button - move on hover only (desktop)
+        if (window.innerWidth >= 768) {
+          noBtn.addEventListener('mouseenter', moveNoButtonOnHover);
+        }
+        
+        // No button - click behavior
+        noBtn.addEventListener('click', handleNoButtonClick);
+        
+        // Touch for mobile
+        noBtn.addEventListener('touchstart', (e) => {
+          e.preventDefault();
+          handleNoButtonClick(e);
+        });
 
-      // Floating hearts effect
-      function createHeart() {
-        const heart = document.createElement("div");
-        heart.classList.add("heart");
-        heart.innerText = "💖";
-        heart.style.left = Math.random() * window.innerWidth + "px";
-        heart.style.animationDuration = 2 + Math.random() * 3 + "s";
-        body.appendChild(heart);
-
-        setTimeout(() => heart.remove(), 5000);
+        // Window resize
+        window.addEventListener('resize', debounce(positionNoButton, 250));
+        
+        // Play music when Yes is clicked
+        yesBtn.addEventListener('click', () => {
+          if (!isMusicPlaying && countdownCompleted) {
+            playBackgroundMusic();
+          }
+        });
       }
 
-      setInterval(createHeart, 500);
+      // Position No Button
+      function positionNoButton() {
+        if (window.innerWidth >= 768) {
+          // Desktop - position below main card
+          noBtn.style.position = 'fixed';
+          noBtn.style.top = 'auto';
+          noBtn.style.left = 'auto';
+          noBtn.style.transform = 'translateX(-50%)';
+        } else {
+          // Mobile - position relative
+          noBtn.style.position = 'relative';
+          noBtn.style.top = 'auto';
+          noBtn.style.left = 'auto';
+          noBtn.style.transform = 'none';
+          noBtn.style.marginTop = '1rem';
+        }
+      }
+
+      // Handle No Button Click
+      function handleNoButtonClick(e) {
+        e.preventDefault();
+        
+        // Update click count and message
+        noBtnClickCount = Math.min(noBtnClickCount + 1, noButtonMessages.length - 1);
+        const message = noButtonMessages[noBtnClickCount];
+        
+        // Update button
+        noBtn.innerHTML = `<i class="fas ${message.icon}"></i> <span>${message.text}</span>`;
+        
+        // If last message, change to Yes button behavior
+        if (noBtnClickCount === noButtonMessages.length - 1) {
+          setTimeout(() => {
+            noBtn.innerHTML = '<i class="fas fa-heart"></i> <span>Try the yes button! 💖</span>';
+            noBtn.className = noBtn.className.replace('from-red-500 to-pink-600', 'from-green-500 to-emerald-600');
+            noBtn.onclick = () => {
+              acceptProposal();
+            };
+          }, 1000);
+        }
+        
+        // Small bounce effect
+        noBtn.classList.add('celebrate');
+        setTimeout(() => {
+          noBtn.classList.remove('celebrate');
+        }, 1500);
+        
+        // Create broken hearts
+        createBrokenHearts(2);
+      }
+
+      // Move No Button on Hover (Desktop only)
+      function moveNoButtonOnHover() {
+        if (isMoving || window.innerWidth < 768) return;
+        
+        isMoving = true;
+
+        const btnWidth = noBtn.offsetWidth;
+        const btnHeight = noBtn.offsetHeight;
+        const windowWidth = window.innerWidth;
+        const windowHeight = window.innerHeight;
+
+        // Calculate new position (avoid edges)
+        const padding = 60;
+        const maxX = windowWidth - btnWidth - padding;
+        const maxY = windowHeight - btnHeight - padding;
+
+        const newX = padding + Math.random() * maxX;
+        const newY = padding + Math.random() * maxY;
+
+        // Smooth animation with bounce effect
+        noBtn.style.transition = 'all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55)';
+        noBtn.style.left = `${newX}px`;
+        noBtn.style.top = `${newY}px`;
+        noBtn.style.transform = 'none';
+
+        // Create broken hearts effect
+        createBrokenHearts(3);
+
+        setTimeout(() => {
+          isMoving = false;
+          noBtn.style.transition = '';
+        }, 500);
+      }
+
+      // Create Sparkles
+      function createSparkles(count) {
+        for (let i = 0; i < count; i++) {
+          setTimeout(() => {
+            const sparkle = document.createElement('div');
+            sparkle.className = 'sparkle';
+            sparkle.style.left = `${Math.random() * 100}vw`;
+            sparkle.style.top = `${Math.random() * 100}vh`;
+            sparklesContainer.appendChild(sparkle);
+
+            setTimeout(() => sparkle.remove(), 1500);
+          }, i * 100);
+        }
+      }
+
+      // Create Hearts
+      function createHearts(count) {
+        const heartTypes = ['💖', '❤️', '💕', '💓', '💗'];
+        
+        for (let i = 0; i < count; i++) {
+          setTimeout(() => {
+            const heart = document.createElement('div');
+            heart.className = 'heart';
+            heart.textContent = heartTypes[Math.floor(Math.random() * heartTypes.length)];
+            heart.style.left = `${Math.random() * 100}vw`;
+            heart.style.fontSize = `${20 + Math.random() * 20}px`;
+            heartsContainer.appendChild(heart);
+
+            setTimeout(() => heart.remove(), 3000);
+          }, i * 200);
+        }
+      }
+
+      // Create Broken Hearts
+      function createBrokenHearts(count) {
+        for (let i = 0; i < count; i++) {
+          setTimeout(() => {
+            const heart = document.createElement('div');
+            heart.className = 'heart';
+            heart.textContent = '💔';
+            heart.style.left = `${noBtn.offsetLeft + Math.random() * noBtn.offsetWidth}px`;
+            heart.style.top = `${noBtn.offsetTop + Math.random() * noBtn.offsetHeight}px`;
+            heart.style.fontSize = '18px';
+            heart.style.animationDuration = '1s';
+            heart.style.color = '#ff6b6b';
+            heartsContainer.appendChild(heart);
+
+            setTimeout(() => heart.remove(), 1000);
+          }, i * 100);
+        }
+      }
+
+      // Create Music Notes
+      function createMusicNotes(count) {
+        const notes = ['♪', '♫', '♬', '🎵', '🎶'];
+        
+        for (let i = 0; i < count; i++) {
+          setTimeout(() => {
+            const note = document.createElement('div');
+            note.className = 'music-note';
+            note.textContent = notes[Math.floor(Math.random() * notes.length)];
+            note.style.left = `${10 + Math.random() * 80}vw`;
+            note.style.animationDelay = `${Math.random() * 2}s`;
+            note.style.color = '#f472b6';
+            musicNotesContainer.appendChild(note);
+
+            setTimeout(() => note.remove(), 2000);
+          }, i * 200);
+        }
+      }
+
+      // Create Confetti
+      function createConfetti() {
+        const colors = ['#ff6b9d', '#c779d0', '#4bc0c8', '#f8a5c2', '#f5cd79'];
+        
+        for (let i = 0; i < 150; i++) {
+          setTimeout(() => {
+            const confetti = document.createElement('div');
+            confetti.style.cssText = `
+              position: fixed;
+              width: 10px;
+              height: 10px;
+              background: ${colors[Math.floor(Math.random() * colors.length)]};
+              border-radius: ${Math.random() > 0.5 ? '50%' : '0'};
+              left: ${Math.random() * 100}vw;
+              top: -10px;
+              z-index: 9999;
+              opacity: 0.9;
+            `;
+            confettiContainer.appendChild(confetti);
+
+            const animation = confetti.animate([
+              { transform: 'translate(0, 0) rotate(0deg)', opacity: 1 },
+              { transform: `translate(${Math.random() * 200 - 100}px, ${window.innerHeight}px) rotate(${Math.random() * 360}deg)`, opacity: 0 }
+            ], {
+              duration: 2000 + Math.random() * 2000,
+              easing: 'cubic-bezier(0.1, 0.8, 0.9, 0.1)'
+            });
+
+            animation.onfinish = () => confetti.remove();
+          }, i * 15);
+        }
+      }
+
+      // Play Background Music
+      function playBackgroundMusic() {
+        if (isMusicPlaying) return;
+        
+        // Try to play music
+        backgroundMusic.volume = 0.3;
+        const playPromise = backgroundMusic.play();
+        
+        if (playPromise !== undefined) {
+          playPromise.then(() => {
+            isMusicPlaying = true;
+            console.log('Romantic music started playing...');
+            
+            // Create music notes
+            createMusicNotes(20);
+            setInterval(() => createMusicNotes(2), 3000);
+            
+          }).catch(error => {
+            console.log('Autoplay prevented. User interaction required.');
+            // Music will play when user interacts with the page
+          });
+        }
+      }
+
+      // Accept Proposal
+      function acceptProposal() {
+        // Play music automatically
+        playBackgroundMusic();
+        
+        // Show modal
+        successModal.showModal();
+        
+        // Create celebration effects
+        createConfetti();
+        createHearts(40);
+        
+        // Update page
+        document.title = '💖 She Said YES! Our Love Story Begins 💖';
+        showCelebrationMessage();
+        
+        // Update yes button
+        yesBtn.innerHTML = '<i class="fas fa-heart animate-pulse"></i> <span>Thank You My Love! 💕</span>';
+        yesBtn.classList.add('animate-pulse');
+        
+        // Hide no button
+        noBtn.style.display = 'none';
+      }
+
+      // Select Date
+      function selectDate(date) {
+        const messages = {
+          'This weekend': 'Perfect! This weekend will be magical! I\'ll plan something special! 💫',
+          'Next week': 'Great! I\'ll count every second until our special date next week! ✨',
+          'As soon as possible': 'Yay! My heart is racing with excitement! Let\'s make today unforgettable! 🎉'
+        };
+        
+        // Show sweet alert
+        const alertDiv = document.createElement('div');
+        alertDiv.className = 'fixed top-4 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-pink-500 to-purple-600 text-white px-6 py-3 rounded-full shadow-2xl z-50 animate-bounce';
+        alertDiv.innerHTML = `<i class="fas fa-calendar-check mr-2"></i> ${messages[date]}`;
+        document.body.appendChild(alertDiv);
+        
+        setTimeout(() => {
+          alertDiv.style.opacity = '0';
+          alertDiv.style.transform = 'translate(-50%, -20px)';
+          setTimeout(() => alertDiv.remove(), 300);
+        }, 4000);
+      }
+
+      // Start Countdown
+      function startCountdown() {
+        let count = 3;
+        const countdown = setInterval(() => {
+          loveTimer.textContent = `${count}...`;
+          
+          if (count === 0) {
+            clearInterval(countdown);
+            loveTimer.innerHTML = 'Now and Forever! 💖';
+            loveTimer.classList.add('animate-pulse', 'gradient-text');
+            createHearts(8);
+            countdownCompleted = true;
+            
+            // Enable automatic music on yes click
+            console.log('Countdown completed. Music ready to play.');
+          }
+          count--;
+        }, 1000);
+      }
+
+      // Show Celebration Message
+      function showCelebrationMessage() {
+        const message = document.createElement('div');
+        message.className = 'fixed top-4 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-green-500 to-emerald-600 text-white px-6 py-3 rounded-full shadow-2xl z-50 animate-bounce';
+        message.innerHTML = '<i class="fas fa-glass-cheers mr-2"></i> Our Love Story Begins! 🎉';
+        document.body.appendChild(message);
+        
+        setTimeout(() => {
+          message.style.opacity = '0';
+          message.style.transform = 'translate(-50%, -20px)';
+          setTimeout(() => message.remove(), 300);
+        }, 5000);
+      }
+
+      // Add Custom CSS
+      function addCustomCSS() {
+        const style = document.createElement('style');
+        style.textContent = `
+          @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+          }
+          .animate-bounce {
+            animation: bounce 1s infinite;
+          }
+        `;
+        document.head.appendChild(style);
+      }
+
+      // Debounce Function
+      function debounce(func, wait) {
+        let timeout;
+        return function executedFunction(...args) {
+          const later = () => {
+            clearTimeout(timeout);
+            func(...args);
+          };
+          clearTimeout(timeout);
+          timeout = setTimeout(later, wait);
+        };
+      }
+
+      // Initialize when page loads
+      window.addEventListener('DOMContentLoaded', init);
+      
+      // Start music on any user interaction (for autoplay policies)
+      document.addEventListener('click', () => {
+        if (!isMusicPlaying && backgroundMusic.paused) {
+          backgroundMusic.play().then(() => {
+            isMusicPlaying = true;
+            backgroundMusic.volume = 0.3;
+          }).catch(() => {
+            // Ignore autoplay errors
+          });
+        }
+      }, { once: true });
     </script>
   </body>
 </html>
